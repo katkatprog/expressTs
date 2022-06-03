@@ -1,11 +1,15 @@
 import createError from "http-errors";
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 
 import { router as indexRouter } from "./routes/index";
 import { router as usersRouter } from "./routes/users";
+
+interface ErrorWithStatus extends Error {
+  status: number;
+}
 
 const app = express();
 
@@ -28,7 +32,12 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (
+  err: ErrorWithStatus,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
