@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node-dev ./src/bin/www",
-    "start": "tsc && node ./dist/bin/www"
+    "dev": "ts-node-dev ./src/backend/bin/www",
+    "start": "tsc && node ./dist/backend/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
