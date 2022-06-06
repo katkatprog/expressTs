@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "ts-node-dev ./src/backend/bin/www",
-    "start": "tsc && node ./dist/backend/bin/www",
-    "build:front": "webpack --config webpack.prod.js"
+    "start": "yarn run build && node ./dist/backend/bin/www",
+    "build": "yarn run build:front && yarn run build:back",
+    "build:front": "webpack --config webpack.prod.js",
+    "build:back": "tsc"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
